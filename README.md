@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Umami Labs — website
 
-## Getting Started
-
-First, run the development server:
+Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS 4 · GSAP + ScrollTrigger · Framer Motion · React Three Fiber · Lenis.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment variables (`.env.local`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URL used for metadata, sitemap and schema (e.g. `https://umamilabs.com`). |
+| `NEXT_PUBLIC_CONTACT_EMAIL` / `NEXT_PUBLIC_CONTACT_PHONE` | Public contact details. Hidden everywhere while empty. |
+| `NEXT_PUBLIC_SOCIAL_LINKEDIN` / `_INSTAGRAM` / `_YOUTUBE` | Social links. Only set ones render. |
+| `ENQUIRY_WEBHOOK_URL` | Enquiry delivery: POSTs JSON to any webhook (Zapier, Make, CRM, Slack…). |
+| `RESEND_API_KEY` + `ENQUIRY_TO_EMAIL` (+ `ENQUIRY_FROM_EMAIL`) | Alternative delivery: sends an email via Resend. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+With no delivery configured, `/api/enquiry` answers 503 and the form honestly says nothing was sent, offering email (if configured) or copy-to-clipboard.
 
-## Learn More
+## Content to confirm before launch
 
-To learn more about Next.js, take a look at the following resources:
+All content lives in `src/content/`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `site.ts` — legal name, contact, socials. **No address is published until verified.**
+- `services.ts` — 15 service categories (+ manufacturing & marketing pages), copy, FAQs per service.
+- `package.ts` — Launch-Ready Package. Every deliverable is marked **Proposed** until `confirmed: true`; timeline/price stay "confirmed during discovery" while empty.
+- `proof.ts` — case studies, testimonials and team. **Empty by design.** Sections show honest states (case-study format "in documentation"; disciplines instead of invented people; testimonials hidden in production). Add only verified, approved entries.
+- `insights.ts` — four evergreen starter articles (no regulatory claims). Review authorship/dates; set `published: false` to hide.
+- `images.ts` — Unsplash photography (Unsplash License). Swap for commissioned photography when available.
+- `/privacy` and `/terms` are drafts marked for legal review.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Theme: light "Botanical Lab" / dark "After Hours Lab", tokens in `src/app/globals.css`; preference persists in `localStorage`, defaults to the OS, applied before paint (no flash).
+- Loader "Formula 001" shows once per session and only advances on real milestones (hydration → fonts → load/hero ready), capped at 3.6 s; skipped for reduced motion.
+- Reduced motion disables smooth scroll, 3D motion, pinned sequences (replaced with static layouts) and reveal animations.
