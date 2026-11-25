@@ -28,7 +28,7 @@ export function LaunchPackage({ compact = false }: { compact?: boolean }) {
         {/* dossier */}
         <article
           data-reveal="fade"
-          className="relative mt-14 border border-rule-strong bg-raised shadow-[0_1px_0_var(--color-border),0_30px_60px_-40px_rgba(25,34,28,0.35)]"
+          className="sketch-card relative mt-14 overflow-hidden"
           aria-label="Launch-Ready Package dossier"
         >
           <header className="flex flex-wrap items-center justify-between gap-3 border-b border-rule px-5 py-3 md:px-8">

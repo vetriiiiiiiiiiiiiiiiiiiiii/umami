@@ -57,7 +57,7 @@ export default function MarketingPage() {
                 ))}
               </ul>
             </div>
-            <div className={`relative overflow-hidden lg:col-span-6 ${i % 2 ? "lg:order-1 aspect-[4/3]" : "lg:col-start-7 aspect-[16/11]"}`} data-reveal="image">
+            <div className={`relative overflow-hidden lg:col-span-6 ${i % 2 ? "lg:order-1 aspect-[4/3]" : "lg:col-start-7 aspect-[16/11]"} sketch-frame`} data-reveal="image">
               <Photo name={p.image} sizes="(min-width:1024px) 50vw, 100vw" />
             </div>
           </div>

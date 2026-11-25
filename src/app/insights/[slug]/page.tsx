@@ -58,7 +58,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </dl>
         </div>
         <div className="wrap mt-12">
-          <div className="relative aspect-[21/9] overflow-hidden" data-reveal="image">
+          <div className="relative aspect-[21/9] overflow-hidden sketch-frame" data-reveal="image">
             <Photo name={a.image} priority sizes="100vw" />
           </div>
         </div>

@@ -17,7 +17,7 @@ export function IndustryGrid({ linkTo = "category" }: { linkTo?: "category" | "p
         <li key={ind.name} className={span[ind.size]} data-reveal="fade" style={{ ["--d" as string]: `${(i % 4) * 70}ms` }}>
           <Link
             href={linkTo === "page" ? "/industries" : `/contact?category=${encodeURIComponent(ind.name)}`}
-            className="zoom-img group relative block h-full overflow-hidden bg-panel"
+            className="zoom-img group relative block h-full overflow-hidden bg-panel sketch-frame"
           >
             <Photo name={ind.image} sizes="(min-width: 768px) 40vw, 50vw" />
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,18,14,0.82)] via-[rgba(12,18,14,0.15)] to-transparent" />

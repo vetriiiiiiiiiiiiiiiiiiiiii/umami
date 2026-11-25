@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { primaryNav } from "@/content/site";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "@/components/ui/Sketch";
 import { MegaMenu } from "./MegaMenu";
 import { MobileMenu } from "./MobileMenu";
 import { onSiteReady } from "@/lib/motion";
@@ -81,13 +82,11 @@ export function Nav() {
             entered ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"
           }`}
         >
-          <Link href="/" className="group flex items-baseline gap-2 text-ink" aria-label="Umami Labs — home">
-            <span className="text-[1.05rem] font-medium tracking-[-0.03em]">UMAMI</span>
-            <span className="font-serif text-[1.15rem] italic leading-none">Labs</span>
-            <span aria-hidden className="ml-1 hidden h-1.5 w-1.5 rounded-full bg-lime ring-1 ring-forest/30 sm:block" />
+          <Link href="/" className="group flex items-center text-ink" aria-label="Umami Labs — home">
+            <Logo size="md" className="transition-transform duration-300 group-hover:-rotate-2" />
           </Link>
 
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center gap-1 xl:flex">
             {primaryNav.map((item) =>
               "mega" in item && item.mega ? (
                 <li key={item.href} onMouseEnter={openMega}>
@@ -135,7 +134,7 @@ export function Nav() {
             </Link>
             <button
               type="button"
-              className="relative flex h-11 w-11 items-center justify-center lg:hidden"
+              className="relative flex h-11 w-11 items-center justify-center xl:hidden"
               aria-label="Open menu"
               aria-expanded={mobile}
               aria-controls="mobile-menu"
@@ -159,7 +158,7 @@ export function Nav() {
           <motion.div
             key="scrim"
             aria-hidden
-            className="fixed inset-0 z-40 hidden bg-[var(--color-overlay)] lg:block"
+            className="fixed inset-0 z-40 hidden bg-[var(--color-overlay)] xl:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}

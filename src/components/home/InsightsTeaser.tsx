@@ -8,7 +8,7 @@ export function ArticleCard({ slug, large = false }: { slug: string; large?: boo
   return (
     <article className="group">
       <Link href={`/insights/${a.slug}`} className="block">
-        <div className={`zoom-img relative overflow-hidden bg-panel ${large ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+        <div className={`zoom-img relative overflow-hidden bg-panel ${large ? "aspect-[16/10]" : "aspect-[4/3]"} sketch-frame`}>
           <Photo name={a.image} sizes={large ? "(min-width:1024px) 50vw, 100vw" : "(min-width:1024px) 25vw, 100vw"} />
         </div>
         <p className="t-label mt-4 flex gap-3 text-muted">

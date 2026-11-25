@@ -51,7 +51,7 @@ export function MegaMenu({ onClose, onEnter }: { onClose: (focusTrigger?: boolea
       animate={{ clipPath: "inset(0 0 0% 0)" }}
       exit={{ clipPath: "inset(0 0 100% 0)" }}
       transition={{ duration: 0.6, ease: EASE_OUT }}
-      className="absolute inset-x-0 top-full hidden border-b border-rule bg-canvas lg:block"
+      className="absolute inset-x-0 top-full hidden border-b border-rule bg-canvas xl:block"
     >
       <div className="wrap grid grid-cols-12 gap-8 py-10">
         {/* categories */}

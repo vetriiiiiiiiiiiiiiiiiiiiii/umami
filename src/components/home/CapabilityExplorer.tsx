@@ -158,7 +158,7 @@ export function CapabilityExplorer() {
                     </div>
                   </div>
                   <div className="col-span-3">
-                    <div className="relative aspect-[3/4] overflow-hidden bg-panel">
+                    <div className="sketch-frame relative aspect-[3/4] overflow-hidden bg-panel">
                       <Photo name={current.c.image} sizes="22vw" />
                     </div>
                     <p className="mt-3 text-[0.85rem] italic text-muted">{current.c.summary}</p>

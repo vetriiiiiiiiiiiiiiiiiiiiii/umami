@@ -27,7 +27,7 @@ export function BrandMarketing() {
           <a
             key={p.n}
             href={`/marketing#${p.n.toLowerCase()}`}
-            className={`zoom-img group relative block overflow-hidden bg-panel ${i === 0 ? "aspect-[4/5] md:row-span-2 md:aspect-auto" : "aspect-[16/10]"} ${i === 0 ? "md:col-span-2" : i === 3 ? "md:col-span-2" : ""}`}
+            className={`zoom-img group relative block overflow-hidden bg-panel ${i === 0 ? "aspect-[4/5] md:row-span-2 md:aspect-auto" : "aspect-[16/10]"} ${i === 0 ? "md:col-span-2" : i === 3 ? "md:col-span-2" : ""} sketch-frame`}
             data-reveal="fade"
             style={{ ["--d" as string]: `${i * 90}ms` }}
           >

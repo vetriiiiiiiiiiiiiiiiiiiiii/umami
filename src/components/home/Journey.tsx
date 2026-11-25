@@ -231,7 +231,7 @@ export function Journey() {
               <h3 className="t-h3 mt-2">
                 {s.title} <span className="t-serif text-band-muted">— {s.serif}</span>
               </h3>
-              <div className="relative mt-5 aspect-[4/3] overflow-hidden" data-reveal="image">
+              <div className="relative mt-5 aspect-[4/3] overflow-hidden sketch-frame" data-reveal="image">
                 <Photo name={s.image} sizes="100vw" />
               </div>
               <p className="mt-5 text-band-muted">{s.body}</p>

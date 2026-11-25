@@ -1,17 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/motion";
-import { Photo } from "@/components/ui/Photo";
-import type { SceneState } from "./HeroScene";
-
-const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
-
-const STAGES = ["Ingredient", "Formula", "Compliant", "Production"];
-const DWELL = 4800;
+import { Arrow, Note, Scribble, SketchIcon, Wash } from "@/components/ui/Sketch";
 
 const SERVICES = [
   { label: "Product formulation", href: "/services/product-development" },
@@ -21,59 +15,10 @@ const SERVICES = [
   { label: "Branding & marketing", href: "/marketing" },
 ];
 
-function supportsWebGL() {
-  try {
-    const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
-  } catch {
-    return false;
-  }
-}
-
 export function Hero() {
   const root = useRef<HTMLElement>(null);
-  const state = useRef<SceneState>({ scroll: 0, reduced: false });
-  const [gl, setGl] = useState<"pending" | "yes" | "no">("pending");
-  const [active, setActive] = useState(true);
-  const [lite, setLite] = useState(false);
-  const [stage, setStage] = useState(0);
-  const [running, setRunning] = useState(false);
-  const resumeAt = useRef(0);
 
-  useEffect(() => {
-    const reduced = prefersReducedMotion();
-    state.current.reduced = reduced;
-    // browser-only capabilities
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLite(window.matchMedia("(max-width: 767px), (pointer: coarse)").matches);
-    setGl(supportsWebGL() ? "yes" : "no");
-    if (reduced) setStage(2);
-    return onSiteReady(() => {
-      if (!reduced) window.setTimeout(() => setRunning(true), 900);
-    });
-  }, []);
-
-  useEffect(() => {
-    const el = root.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => setActive(e.isIntersecting), { threshold: 0 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!running || !active) return;
-    const wait = Math.max(DWELL, resumeAt.current - Date.now());
-    const id = window.setTimeout(() => setStage((s) => (s + 1) % STAGES.length), wait);
-    return () => window.clearTimeout(id);
-  }, [stage, running, active]);
-
-  const pick = useCallback((i: number) => {
-    resumeAt.current = Date.now() + 8000;
-    setStage(i);
-  }, []);
-
-  // short, calm entrance
+  // short, friendly entrance: words, then the jar, then the notes get "written"
   useEffect(() => {
     const el = root.current;
     if (!el || prefersReducedMotion()) return;
@@ -81,16 +26,18 @@ export function Hero() {
     const ctx = gsap.context(() => {
       gsap.set(q("[data-h]"), { opacity: 1 });
       gsap.set(q("[data-h='line'] > span"), { yPercent: 110 });
-      gsap.set(q("[data-h='fade']"), { opacity: 0, y: 14 });
-      gsap.set(q("[data-h='visual']"), { opacity: 0 });
+      gsap.set(q("[data-h='fade']"), { opacity: 0, y: 12 });
+      gsap.set(q("[data-h='visual']"), { opacity: 0, scale: 0.92, rotate: -4 });
+      gsap.set(q("[data-h='note']"), { opacity: 0, y: 6 });
     }, el);
     const off = onSiteReady(() =>
       ctx.add(() => {
         gsap
           .timeline({ defaults: { ease: "expo.out" } })
-          .to(q("[data-h='line'] > span"), { yPercent: 0, duration: 1, stagger: 0.07 }, 0)
-          .to(q("[data-h='fade']"), { opacity: 1, y: 0, duration: 0.8, stagger: 0.06 }, 0.3)
-          .to(q("[data-h='visual']"), { opacity: 1, duration: 1.4, ease: "power2.out" }, 0.2);
+          .to(q("[data-h='line'] > span"), { yPercent: 0, duration: 1, stagger: 0.08 }, 0)
+          .to(q("[data-h='visual']"), { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: "back.out(1.4)" }, 0.15)
+          .to(q("[data-h='fade']"), { opacity: 1, y: 0, duration: 0.8, stagger: 0.06 }, 0.35)
+          .to(q("[data-h='note']"), { opacity: 1, y: 0, duration: 0.6, stagger: 0.18, ease: "power2.out" }, 0.8);
       }),
     );
     return () => {
@@ -100,41 +47,39 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={root} data-hero aria-labelledby="hero-title" className="relative overflow-hidden pt-[var(--nav-h)]">
-      <div className="wrap grid items-center gap-8 pb-14 pt-8 md:pt-14 lg:min-h-[calc(100svh-var(--nav-h))] lg:grid-cols-12 lg:gap-10 lg:pb-16 lg:pt-6">
+    <section ref={root} data-hero aria-labelledby="hero-title" className="grain relative overflow-hidden pt-[var(--nav-h)]">
+      <div className="wrap relative z-10 grid items-center gap-6 pb-16 pt-8 md:pt-12 lg:min-h-[calc(100svh-var(--nav-h))] lg:grid-cols-12 lg:gap-10 lg:pb-16 lg:pt-4">
         {/* message */}
         <div className="order-2 lg:order-1 lg:col-span-6">
-          <p data-h="fade" className="t-label flex items-center gap-2 text-muted">
-            <span aria-hidden className="h-2 w-2 rounded-full bg-lime ring-1 ring-forest/30" />
-            Food product consultancy
+          <p data-h="fade" className="t-hand text-[1.2rem] text-terra sm:text-[clamp(1.35rem,1.9vw,1.8rem)]">
+            food product consultancy —
           </p>
           <h1
             id="hero-title"
-            className="mt-5 text-[clamp(2.4rem,5.4vw,5.2rem)] font-medium leading-[0.98] tracking-[-0.04em]"
+            className="t-display mt-3 text-ink"
             aria-label="From first formulation to full-scale production."
           >
-            {[["From first formulation"], ["to ", "full-scale"], ["production."]].map((line, i) => (
-              <span key={i} data-h="line" className="mask-line" aria-hidden>
+            {[["From first"], ["formulation to"], ["full-scale"], ["production."]].map((line, i) => (
+              <span key={i} data-h="line" className="mask-line" aria-hidden style={line[0] === "full-scale" ? { paddingBottom: "0.24em", marginBottom: "-0.18em" } : undefined}>
                 <span>
-                  {line.map((seg, j) =>
-                    seg === "full-scale" ? (
-                      <span key={j} className="t-serif text-forest dark:text-lime">
-                        full-scale
-                      </span>
-                    ) : (
-                      <span key={j}>{seg}</span>
-                    ),
+                  {line[0] === "full-scale" ? (
+                    <span className="t-inked relative inline-block">
+                      full-scale
+                      <Scribble className="absolute -bottom-[0.16em] left-0 h-[0.2em] w-full" />
+                    </span>
+                  ) : (
+                    line[0]
                   )}
                 </span>
               </span>
             ))}
           </h1>
-          <p data-h="fade" className="mt-6 max-w-[48ch] text-[1.1rem] leading-relaxed text-muted">
-            We help food founders and brands develop products, get them compliant and get them made — with one team handling
-            recipe, regulation, factory and launch.
+          <p data-h="fade" className="t-lead mt-6 max-w-[46ch] text-muted">
+            We help food founders and brands develop products, get them compliant and get them made — one team for recipe,
+            regulation, factory and launch.
           </p>
-          <div data-h="fade" className="mt-8 flex flex-wrap gap-3">
-            <Link href="/contact" className="cta cta--accent">
+          <div data-h="fade" className="mt-8 flex flex-wrap gap-4">
+            <Link href="/contact" className="cta">
               <span>Start a project</span>
               <span aria-hidden className="cta-arrow">↗</span>
             </Link>
@@ -143,10 +88,10 @@ export function Hero() {
               <span aria-hidden className="cta-arrow">→</span>
             </Link>
           </div>
-          <ul data-h="fade" className="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-rule pt-5" aria-label="Core services">
+          <ul data-h="fade" className="mt-10 flex flex-wrap gap-2" aria-label="Core services">
             {SERVICES.map((s) => (
               <li key={s.href}>
-                <Link href={s.href} className="link-u text-[0.92rem] text-ink">
+                <Link href={s.href} className="sketch-soft inline-block bg-raised px-3 py-1.5 text-[0.9rem] font-semibold transition-colors hover:border-ink">
                   {s.label}
                 </Link>
               </li>
@@ -154,34 +99,61 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* visual: the journey in particles, with a plain caption */}
-        <div className="order-1 lg:order-2 lg:col-span-6">
-          <div data-h="visual" aria-hidden className="relative h-[36svh] min-h-[250px] md:h-[46svh] lg:h-[58svh]">
-            {gl === "yes" && <HeroScene state={state} stage={stage} active={active} lite={lite} />}
-            {gl === "no" && (
-              <div className="absolute inset-[8%] overflow-hidden rounded-full">
-                <Photo name="spicesFlat" sizes="50vw" decorative />
+        {/* the jar, annotated like a page from a sketchbook */}
+        <div className="relative order-1 mx-auto w-full max-w-[560px] lg:order-2 lg:col-span-6">
+          <div className="relative aspect-[1/1.02]">
+            <Wash tone="green" className="absolute inset-[6%] h-[88%] w-[88%]" opacity={0.5} />
+            <Wash tone="blue" className="absolute bottom-[6%] right-[2%] h-[38%] w-[46%]" opacity={0.35} />
+
+            <div data-h="visual" className="absolute inset-[17%]">
+              <div className="float relative h-full w-full">
+                <Image
+                  src="/brand/jar.png"
+                  alt="Hand-drawn jar of green umami sauce with the label ‘Trends fade. Experiences remain. Contains umami.’"
+                  fill
+                  priority
+                  sizes="(min-width:1024px) 40vw, 80vw"
+                  className="object-contain drop-shadow-[0_18px_18px_rgba(27,30,52,0.18)]"
+                />
               </div>
-            )}
+            </div>
+
+            {/* annotations */}
+            <div data-h="note" className="absolute left-0 top-[6%] hidden w-[38%] sm:block">
+              <Note>
+                <span className="text-terra">1.</span> your idea
+              </Note>
+              <Arrow className="ml-[30%] mt-1 h-10 w-24 rotate-[18deg] text-ink" />
+            </div>
+            <div data-h="note" className="absolute right-0 top-[2%] hidden w-[40%] text-right sm:block">
+              <Note>
+                <span className="text-terra">2.</span> a recipe that works
+              </Note>
+              <Arrow className="ml-auto mr-[38%] mt-1 h-10 w-24 -scale-x-100 rotate-[-14deg] text-ink" />
+            </div>
+            <div data-h="note" className="absolute -right-3 bottom-[20%] hidden w-[24%] sm:block">
+              <Arrow className="mb-1 h-10 w-16 -scale-x-100 rotate-[160deg] text-ink" />
+              <Note>
+                <span className="text-terra">3.</span> label checked
+                <br />
+                FSSAI ✓
+              </Note>
+            </div>
+            <div data-h="note" className="absolute bottom-[2%] left-[2%] hidden w-[42%] sm:block">
+              <Arrow className="mb-1 ml-[44%] h-10 w-20 rotate-[-150deg] text-ink" />
+              <Note>
+                <span className="text-terra">4.</span> ready for the factory
+              </Note>
+            </div>
+
+            {/* little doodles */}
+            <SketchIcon name="flask" tone="purple" className="absolute left-[4%] top-[42%] hidden h-14 w-14 -rotate-12 sm:block" />
+            <SketchIcon name="factory" tone="blue" className="absolute bottom-[3%] right-[30%] hidden h-14 w-14 rotate-6 sm:block" />
           </div>
-          <ol data-h="fade" className="mx-auto mt-2 grid max-w-[520px] grid-cols-4 gap-2" aria-label="How a product comes together">
-            {STAGES.map((s, i) => (
-              <li key={s}>
-                <button type="button" onClick={() => pick(i)} aria-pressed={i === stage} className="group min-h-11 w-full text-left">
-                  <span className="relative block h-[2px] overflow-hidden bg-rule">
-                    <span
-                      className={`absolute inset-0 origin-left bg-terra transition-transform duration-500 dark:bg-lime ${
-                        i === stage ? "scale-x-100" : i < stage ? "scale-x-100 opacity-30" : "scale-x-0"
-                      }`}
-                    />
-                  </span>
-                  <span className={`t-label mt-2 block transition-colors ${i === stage ? "text-ink" : "text-muted group-hover:text-ink"}`}>
-                    0{i + 1} <span className="hidden sm:inline">{s}</span>
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
+          {/* compact story for phones */}
+          <p className="t-hand -mt-2 text-center text-[1.05rem] text-ink sm:hidden">
+            idea → recipe → label checked ✓ → factory
+          </p>
         </div>
       </div>
     </section>

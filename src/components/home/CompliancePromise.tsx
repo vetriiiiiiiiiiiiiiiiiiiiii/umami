@@ -24,7 +24,7 @@ export function CompliancePromise() {
             Every formulation should be checked against applicable regulatory requirements before trials and scale-up — so
             requirements are considered early rather than discovered at the end.
           </p>
-          <div className="relative mt-12 hidden aspect-[16/9] max-w-[640px] overflow-hidden lg:block" data-reveal="image">
+          <div className="relative mt-12 hidden aspect-[16/9] max-w-[640px] overflow-hidden lg:block sketch-frame" data-reveal="image">
             <Photo name="capsules" sizes="45vw" />
           </div>
         </div>

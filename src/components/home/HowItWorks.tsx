@@ -1,50 +1,53 @@
 import Link from "next/link";
-import { Photo } from "@/components/ui/Photo";
-import type { ImageKey } from "@/content/images";
+import { Arrow, SketchIcon, type IconName } from "@/components/ui/Sketch";
 
-const steps: { n: string; title: string; text: string; items: string[]; href: string; image: ImageKey }[] = [
+const steps: { n: string; title: string; text: string; items: string[]; href: string; icon: IconName; tone: "green" | "blue" | "purple" }[] = [
   {
-    n: "01",
+    n: "1",
     title: "Develop",
     text: "We turn your idea into a recipe that tastes right, costs right and runs on a real line.",
     items: ["Formulation & R&D", "Prototypes & pilot batches", "Shelf-life & testing"],
     href: "/services/product-development",
-    image: "labPipette",
+    icon: "flask",
+    tone: "green",
   },
   {
-    n: "02",
+    n: "2",
     title: "Comply",
     text: "Category, labels and claims are checked before trials — not discovered at the end.",
     items: ["FSSAI licensing", "Label & claims review", "Food safety systems"],
     href: "/services/regulatory-compliance",
-    image: "labGlass",
+    icon: "shield",
+    tone: "blue",
   },
   {
-    n: "03",
+    n: "3",
     title: "Produce",
     text: "Your own plant or the right contract manufacturer — planned, costed and commissioned.",
     items: ["Plant setup & DPR", "Co-packers & partners", "Cost optimisation"],
     href: "/services/plant-setup",
-    image: "processPlant",
+    icon: "factory",
+    tone: "purple",
   },
   {
-    n: "04",
+    n: "4",
     title: "Launch",
     text: "Packaging, positioning and channels that fit what the product actually is.",
     items: ["Packaging & labelling", "Brand & go-to-market", "E-commerce & D2C"],
     href: "/marketing",
-    image: "chips",
+    icon: "megaphone",
+    tone: "green",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section aria-labelledby="how-title" className="section border-t border-rule">
+    <section aria-labelledby="how-title" className="section">
       <div className="wrap">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
             <h2 id="how-title" className="t-h2">
-              One team. <span className="t-serif">The entire journey.</span>
+              One team. <span className="t-serif">the entire journey.</span>
             </h2>
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
@@ -55,38 +58,38 @@ export function HowItWorks() {
           </div>
         </div>
 
-        <ol className="mt-12 grid gap-px overflow-hidden border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {steps.map((s, i) => (
-            <li key={s.n} className="group flex flex-col bg-canvas" data-reveal="fade" style={{ ["--d" as string]: `${i * 80}ms` }}>
-              <Link href={s.href} className="flex flex-1 flex-col p-5 md:p-6">
-                <div className="flex items-baseline justify-between">
-                  <span className="t-label text-terra">Step {s.n}</span>
-                  <span aria-hidden className="text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink">
-                    ↗
-                  </span>
+            <li key={s.n} className="relative" data-reveal="fade" style={{ ["--d" as string]: `${i * 90}ms` }}>
+              <Link
+                href={s.href}
+                className={`sketch-card group flex h-full flex-col p-6 transition-transform duration-300 hover:-translate-y-1 ${i % 2 ? "lg:rotate-[0.6deg]" : "lg:-rotate-[0.6deg]"}`}
+              >
+                <div className="flex items-start justify-between">
+                  <span className="t-hand text-[2.6rem] leading-none text-terra">{s.n}.</span>
+                  <SketchIcon name={s.icon} tone={s.tone} className="h-20 w-20 transition-transform duration-500 group-hover:rotate-6" />
                 </div>
-                <div className="zoom-img relative mt-5 aspect-[4/3] overflow-hidden bg-panel">
-                  <Photo name={s.image} sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" />
-                </div>
-                <h3 className="mt-5 text-[1.5rem] font-medium tracking-[-0.03em]">{s.title}</h3>
+                <h3 className="t-h3 mt-4">{s.title}</h3>
                 <p className="mt-2 text-[0.95rem] text-muted">{s.text}</p>
-                <ul className="mt-auto space-y-1 pt-5 text-[0.9rem]">
+                <ul className="mt-auto space-y-1 pt-5 text-[0.92rem] font-semibold">
                   {s.items.map((it) => (
                     <li key={it} className="flex gap-2">
-                      <span aria-hidden className="text-terra">—</span>
+                      <span aria-hidden className="text-forest">✓</span>
                       {it}
                     </li>
                   ))}
                 </ul>
               </Link>
+              {i < steps.length - 1 && (
+                <Arrow className="absolute -right-7 top-1/2 z-10 hidden h-8 w-12 text-ink lg:block" d="M6 30 C 30 18, 70 18, 110 26" />
+              )}
             </li>
           ))}
         </ol>
 
-        <p className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.92rem] text-muted">
-          <span>
-            <span className="font-medium text-ink">Compliance-first:</span> every formulation is checked against applicable
-            regulations before trials.
+        <p className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <span className="t-hand text-[1.1rem] text-ink sm:text-[1.4rem]">
+            psst — compliance is checked <span className="text-terra">before</span> trials, not after.
           </span>
           <Link href="/approach" className="t-label link-u text-ink">
             Read our approach →

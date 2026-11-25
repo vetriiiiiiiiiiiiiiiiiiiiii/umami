@@ -10,7 +10,7 @@ function ServicesSplit({ c }: { c: ServiceCategory }) {
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-5">
         <div className="lg:sticky lg:top-28">
-          <div className="relative aspect-[4/5] overflow-hidden" data-reveal="image">
+          <div className="relative aspect-[4/5] overflow-hidden sketch-frame" data-reveal="image">
             <Photo name={c.secondaryImage} sizes="(min-width:1024px) 38vw, 100vw" />
           </div>
           <p className="t-label mt-4 flex justify-between text-muted">
@@ -44,7 +44,7 @@ function ServicesIndex({ c }: { c: ServiceCategory }) {
         ))}
       </ul>
       <div className="mt-14 grid gap-3 md:grid-cols-3">
-        <div className="relative aspect-[4/3] overflow-hidden md:col-span-2" data-reveal="image">
+        <div className="relative aspect-[4/3] overflow-hidden md:col-span-2 sketch-frame" data-reveal="image">
           <Photo name={c.secondaryImage} sizes="66vw" />
         </div>
         <div className="flex flex-col justify-between border border-rule p-6">

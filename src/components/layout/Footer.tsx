@@ -98,13 +98,15 @@ export function Footer() {
           </div>
         </div>
 
-        {/* oversized wordmark */}
-        <p
-          aria-hidden
-          className="mt-24 select-none whitespace-nowrap text-[clamp(4.5rem,21vw,22rem)] font-medium leading-[0.78] tracking-[-0.07em] text-band-ink"
-        >
-          UMAMI <span className="font-serif font-normal italic tracking-[-0.03em] text-lime">Labs</span>
-        </p>
+        {/* the logo, large */}
+        <div className="mt-20 flex flex-col items-center gap-2 text-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/jar.png" alt="" width={370} height={385} className="float h-32 w-auto md:h-44" />
+          <p aria-hidden className="select-none font-[family-name:var(--ff-display)] text-[clamp(3.6rem,13vw,11rem)] font-extrabold leading-[0.9] tracking-[0.02em] text-[#a9b6ff] [text-shadow:0.04em_0.04em_0_#05060d]">
+            UMAMI
+          </p>
+          <p aria-hidden className="font-extrabold tracking-[0.3em] text-[#d2bcff] text-[clamp(1rem,2.4vw,2rem)]">LABS</p>
+        </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">
           <p className="t-label text-band-muted">

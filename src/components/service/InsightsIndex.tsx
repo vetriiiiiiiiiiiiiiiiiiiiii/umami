@@ -36,7 +36,7 @@ export function InsightsIndex({ articles, categories }: { articles: Lite[]; cate
           {list.map((a, i) => (
             <li key={a.slug} className={i === 0 ? "md:col-span-2 lg:col-span-12" : "lg:col-span-4"}>
               <Link href={`/insights/${a.slug}`} className={`group grid gap-6 ${i === 0 ? "lg:grid-cols-12 lg:items-end" : ""}`}>
-                <div className={`zoom-img relative overflow-hidden bg-panel ${i === 0 ? "aspect-[16/9] lg:col-span-8" : "aspect-[4/3]"}`}>
+                <div className={`zoom-img relative overflow-hidden bg-panel ${i === 0 ? "aspect-[16/9] lg:col-span-8" : "aspect-[4/3]"} sketch-frame`}>
                   <Photo name={a.image} sizes={i === 0 ? "66vw" : "(min-width:1024px) 33vw, 100vw"} />
                 </div>
                 <div className={i === 0 ? "lg:col-span-4" : ""}>

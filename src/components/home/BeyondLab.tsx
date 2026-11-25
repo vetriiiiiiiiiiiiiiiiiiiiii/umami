@@ -30,7 +30,7 @@ export function BeyondLab() {
         </h2>
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {cards.map((c) => (
-            <Link key={c.href} href={c.href} className="group zoom-img relative flex min-h-[420px] flex-col justify-end overflow-hidden bg-panel p-6 text-[#f1f0e7] md:min-h-[520px] md:p-8">
+            <Link key={c.href} href={c.href} className="group zoom-img relative flex min-h-[420px] flex-col justify-end overflow-hidden bg-panel p-6 text-[#f1f0e7] md:min-h-[520px] md:p-8 sketch-frame">
               <Photo name={c.image} sizes="(min-width:768px) 50vw, 100vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,18,14,0.94)] via-[rgba(12,18,14,0.6)] to-[rgba(12,18,14,0.1)]" />
               <div className="relative">

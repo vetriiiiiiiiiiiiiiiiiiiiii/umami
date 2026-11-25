@@ -97,31 +97,23 @@ export function Loader() {
   const p = step / 3;
   return (
     <div id="loader" ref={ref} role="status" aria-live="polite" aria-label="Loading Umami Labs" style={{ ["--p" as string]: p }}>
-      <div className="ld-inner w-[min(560px,84vw)]">
-        <div className="mb-10 flex items-baseline justify-between">
-          <span className="font-mono text-[0.68rem] tracking-[0.18em] text-[#aab9a2]">FORMULA 001</span>
-          <span className="font-mono text-[0.68rem] tracking-[0.18em] text-[#aab9a2]" aria-hidden>
-            {String(step).padStart(2, "0")} / 03
-          </span>
-        </div>
-        <p className="mb-10 text-center text-[clamp(2.2rem,7vw,3.6rem)] font-medium leading-none tracking-[-0.04em]">
-          UMAMI <span className="font-serif font-normal italic tracking-[-0.02em]">Labs</span>
+      <div className="ld-inner flex w-[min(460px,84vw)] flex-col items-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/jar.png" alt="" width={370} height={385} className="ld-jar h-36 w-auto md:h-44" />
+        <p className="t-inked mt-4 text-center font-[family-name:var(--ff-display)] text-[clamp(2.4rem,8vw,3.4rem)] font-extrabold leading-none tracking-[0.02em]">
+          UMAMI
         </p>
-        <div className="ld-line">
-          <div className="ld-fill" />
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <span
-              key={i}
-              className="ld-particle"
-              style={{ animationDelay: `${i * 0.27}s`, ["--dy" as string]: `${(i % 2 ? 1 : -1) * (3 + i)}px` }}
-            />
-          ))}
-          <div className="ld-head" />
+        <p className="mt-1 text-[0.95rem] font-extrabold tracking-[0.3em] text-terra">LABS</p>
+        <div className="ld-line mt-8 w-full">
+          <svg viewBox="0 0 400 16" preserveAspectRatio="none" className="absolute inset-x-0 -top-[7px] h-4 w-full overflow-visible">
+            <path d="M2 9 C 60 3, 120 13, 200 8 S 340 4, 398 9" fill="none" stroke="var(--color-border-strong)" strokeWidth="2" strokeLinecap="round" filter="url(#ink)" />
+            <path className="ld-draw" d="M2 9 C 60 3, 120 13, 200 8 S 340 4, 398 9" fill="none" stroke="var(--color-accent)" strokeWidth="4" strokeLinecap="round" pathLength={1} filter="url(#ink)" />
+          </svg>
         </div>
-        <ol className="mt-5 grid grid-cols-3 font-mono text-[0.68rem] tracking-[0.16em]">
+        <ol className="mt-4 grid w-full grid-cols-3 font-[family-name:var(--ff-hand)] text-[1.2rem]">
           {STAGES.map((s, i) => (
             <li key={s} className={`ld-stage ${step > i ? "on" : ""} ${i === 1 ? "text-center" : i === 2 ? "text-right" : ""}`}>
-              0{i + 1} — {s.toUpperCase()}
+              {i + 1}. {s.toLowerCase()}
             </li>
           ))}
         </ol>

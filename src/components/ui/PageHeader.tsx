@@ -59,7 +59,7 @@ export function PageHeader({
       </div>
       {image ? (
         <div className="wrap relative z-10 mt-14 md:mt-20">
-          <div className="relative aspect-[16/9] overflow-hidden md:aspect-[21/9]" data-reveal="image">
+          <div className="relative aspect-[16/9] overflow-hidden md:aspect-[21/9] sketch-frame" data-reveal="image">
             <Photo name={image} priority sizes="100vw" />
           </div>
         </div>

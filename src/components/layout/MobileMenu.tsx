@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { primaryNav, site } from "@/content/site";
 import { serviceGroups, hrefFor, titleFor } from "@/content/services";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "@/components/ui/Sketch";
 import { EASE_OUT } from "@/lib/motion";
 
 export function MobileMenu({ onClose }: { onClose: () => void }) {
@@ -54,16 +55,15 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
       role="dialog"
       aria-modal="true"
       aria-label="Menu"
-      className="deep grain fixed inset-0 z-[60] flex flex-col overflow-y-auto lg:hidden"
+      className="deep grain fixed inset-0 z-[60] flex flex-col overflow-y-auto xl:hidden"
       initial={{ clipPath: "inset(0 0 100% 0)" }}
       animate={{ clipPath: "inset(0 0 0% 0)" }}
       exit={{ clipPath: "inset(0 0 100% 0)" }}
       transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
     >
       <div className="wrap relative z-10 flex h-[var(--nav-h)] shrink-0 items-center justify-between">
-        <Link href="/" onClick={onClose} className="flex items-baseline gap-2">
-          <span className="text-[1.05rem] font-medium tracking-[-0.03em]">UMAMI</span>
-          <span className="font-serif text-[1.15rem] italic">Labs</span>
+        <Link href="/" onClick={onClose} className="flex items-center" aria-label="Umami Labs — home">
+          <Logo size="md" />
         </Link>
         <button ref={closeBtn} type="button" onClick={onClose} aria-label="Close menu" className="flex h-11 items-center gap-3">
           <span className="t-label">Close</span>

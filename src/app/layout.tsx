@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Instrument_Serif, IBM_Plex_Mono } from "next/font/google";
+import { Cinzel, Caveat, Nunito } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Loader } from "@/components/layout/Loader";
 import { MotionRoot } from "@/components/layout/MotionRoot";
+import { SketchDefs } from "@/components/ui/Sketch";
 import { JsonLd, organizationSchema } from "@/lib/seo";
 
-const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--ff-grotesk", display: "swap" });
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--ff-serif", display: "swap" });
-const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--ff-mono", display: "swap" });
+const display = Cinzel({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--ff-display", display: "swap" });
+const hand = Caveat({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--ff-hand", display: "swap" });
+const body = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800"], variable: "--ff-body", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -35,8 +36,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f1e8" },
-    { media: "(prefers-color-scheme: dark)", color: "#101713" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f2ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#13162a" },
   ],
 };
 
@@ -45,12 +46,13 @@ const bootScript = `(function(){var d=document.documentElement;try{var t=localSt
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning className={`${grotesk.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${display.variable} ${hand.variable} ${body.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
       <body>
+        <SketchDefs />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

@@ -18,7 +18,8 @@ export function MotionRoot() {
   // Reveal observer — re-scans on each route change
   useEffect(() => {
     let io: IntersectionObserver | null = null;
-    const off = onSiteReady(() => {
+    let timer = 0;
+    const start = () => {
       const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-in])"));
       if (!document.documentElement.classList.contains("motion")) {
         els.forEach((el) => el.setAttribute("data-in", ""));
@@ -37,9 +38,19 @@ export function MotionRoot() {
       );
       els.forEach((el) => io!.observe(el));
       requestAnimationFrame(() => ScrollTrigger.refresh());
+    };
+    // wait until the streamed page has hydrated before touching its DOM
+    const onLoad = () => {
+      timer = window.setTimeout(start, 60);
+    };
+    const off = onSiteReady(() => {
+      if (document.readyState === "complete") onLoad();
+      else window.addEventListener("load", onLoad, { once: true });
     });
     return () => {
       off();
+      window.clearTimeout(timer);
+      window.removeEventListener("load", onLoad);
       io?.disconnect();
     };
   }, [pathname]);

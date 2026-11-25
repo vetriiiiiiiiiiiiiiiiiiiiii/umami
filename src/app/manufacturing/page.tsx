@@ -67,7 +67,7 @@ export default function ManufacturingPage() {
       </section>
       <section className="pb-24">
         <div className="wrap grid gap-3 md:grid-cols-3">
-          <div className="relative aspect-[4/3] overflow-hidden md:col-span-2" data-reveal="image">
+          <div className="relative aspect-[4/3] overflow-hidden md:col-span-2 sketch-frame" data-reveal="image">
             <Photo name="processPlant" sizes="66vw" />
           </div>
           <div className="flex flex-col justify-between gap-8 bg-panel p-6 md:p-8">

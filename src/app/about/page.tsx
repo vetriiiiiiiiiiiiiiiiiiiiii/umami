@@ -58,7 +58,7 @@ export default function AboutPage() {
             <p className="t-label text-band-muted">02 — Philosophy</p>
             <MaskLines id="philosophy" className="t-h1 mt-6" lines={["Science.", [{ serif: "Taste." }], "Commercial reality."]} />
           </div>
-          <div className="relative aspect-[4/5] overflow-hidden lg:col-span-4 lg:col-start-9" data-reveal="image">
+          <div className="relative aspect-[4/5] overflow-hidden lg:col-span-4 lg:col-start-9 sketch-frame" data-reveal="image">
             <Photo name="spicesDark" sizes="33vw" />
           </div>
         </div>

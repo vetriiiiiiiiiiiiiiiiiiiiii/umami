@@ -82,8 +82,8 @@ export function ThemeToggle({ className = "", showLabel = false }: { className?:
       </span>
       {showLabel && (
         <span className="t-label">
-          <span className="dark:hidden">Light — Botanical Lab</span>
-          <span className="hidden dark:inline">Dark — After Hours Lab</span>
+          <span className="dark:hidden">Light — paper &amp; ink</span>
+          <span className="hidden dark:inline">Dark — night sketchbook</span>
         </span>
       )}
     </button>
