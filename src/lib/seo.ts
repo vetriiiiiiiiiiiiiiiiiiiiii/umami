@@ -18,14 +18,14 @@ export function pageMeta({
     description,
     alternates: { canonical: path },
     openGraph: {
-      title: `${title} — Umami Labs`,
+      title: `${title} — Umami Labz`,
       description,
       url: path,
       siteName: site.name,
       type: "website",
       ...(image ? { images: [{ url: image, width: 1200, height: 630 }] } : {}),
     },
-    twitter: { card: "summary_large_image", title: `${title} — Umami Labs`, description },
+    twitter: { card: "summary_large_image", title: `${title} — Umami Labz`, description },
   };
 }
 

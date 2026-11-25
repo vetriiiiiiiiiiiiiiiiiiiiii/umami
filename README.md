@@ -1,4 +1,4 @@
-# Umami Labs — website
+# Umami Labz — website
 
 Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS 4 · GSAP + ScrollTrigger · Framer Motion · React Three Fiber · Lenis.
 

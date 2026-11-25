@@ -118,7 +118,7 @@ export function Expertise() {
             project, at the same time.
           </p>
           <ArrowLink href="/about" className="mt-6">
-            About Umami Labs
+            About Umami Labz
           </ArrowLink>
         </div>
         <div className="lg:col-span-8">

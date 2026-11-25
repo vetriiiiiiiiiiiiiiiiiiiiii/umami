@@ -1,7 +1,7 @@
 /**
  * Photography library. All images are served from the Unsplash CDN
  * (free to use under the Unsplash License). Replace with commissioned
- * photography of real Umami Labs work when available.
+ * photography of real Umami Labz work when available.
  */
 export type Img = { id: string; alt: string; tone?: "dark" | "light" };
 

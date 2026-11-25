@@ -16,8 +16,8 @@ const body = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800"], 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Umami Labs — Food Product Development, Compliance & Manufacturing Consultancy",
-    template: "%s — Umami Labs",
+    default: "Umami Labz — Food Product Development, Compliance & Manufacturing Consultancy",
+    template: "%s — Umami Labz",
   },
   description: site.description,
   applicationName: site.name,
@@ -25,19 +25,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: "Umami Labs — One team. The entire journey.",
+    title: "Umami Labz — One team. The entire journey.",
     description: site.description,
     url: "/",
     locale: "en_IN",
   },
-  twitter: { card: "summary_large_image", title: "Umami Labs — One team. The entire journey.", description: site.description },
+  twitter: { card: "summary_large_image", title: "Umami Labz — One team. The entire journey.", description: site.description },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f2ec" },
-    { media: "(prefers-color-scheme: dark)", color: "#13162a" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f4f0" },
+    { media: "(prefers-color-scheme: dark)", color: "#171215" },
   ],
 };
 

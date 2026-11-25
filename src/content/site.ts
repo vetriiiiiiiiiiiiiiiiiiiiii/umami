@@ -1,15 +1,15 @@
 /**
  * Site-wide configuration.
  *
- * Everything here is business information that Umami Labs must confirm before launch.
+ * Everything here is business information that Umami Labz must confirm before launch.
  * Values left empty are hidden in the UI rather than replaced with invented details.
  */
 export const site = {
-  name: "Umami Labs",
-  legalName: "Umami Labs", // REPLACE with registered entity name
+  name: "Umami Labz",
+  legalName: "Umami Labz", // REPLACE with registered entity name
   tagline: "One team. The entire journey.",
   description:
-    "Umami Labs is a food innovation consultancy covering product formulation, R&D, regulatory compliance, food safety, plant setup, manufacturing partnerships and brand strategy — planned together from concept to commercial production.",
+    "Umami Labz is a food innovation consultancy covering product formulation, R&D, regulatory compliance, food safety, plant setup, manufacturing partnerships and brand strategy — planned together from concept to commercial production.",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, ""),
   /** Public enquiry email. Leave empty until confirmed — the UI hides mail links when empty. */
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",

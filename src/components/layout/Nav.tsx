@@ -82,7 +82,7 @@ export function Nav() {
             entered ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"
           }`}
         >
-          <Link href="/" className="group flex items-center text-ink" aria-label="Umami Labs — home">
+          <Link href="/" className="group flex items-center text-ink" aria-label="Umami Labz — home">
             <Logo size="md" className="transition-transform duration-300 group-hover:-rotate-2" />
           </Link>
 

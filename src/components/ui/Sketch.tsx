@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 
 /**
- * The Umami Labs drawing kit — everything that makes the site feel hand-made:
+ * The Umami Labz drawing kit — everything that makes the site feel hand-made:
  * SVG filters (wobbly ink + watercolour bleed), washes, scribbles, arrows and
  * a small set of sketched icons. Pure SVG, no images, works in both themes.
  */
@@ -275,18 +275,18 @@ export const serviceIcon: Record<string, IconName> = {
 
 /* ───────── logo ───────── */
 
-/** The jar from the Umami Labs logo + the wordmark set in type so it adapts to both themes. */
+/** The jar from the Umami Labz logo + the wordmark set in type so it adapts to both themes. */
 export function Logo({ size = "md", stacked = false, className = "" }: { size?: "sm" | "md" | "lg"; stacked?: boolean; className?: string }) {
-  const jar = size === "lg" ? "h-24" : size === "sm" ? "h-8" : "h-10";
+  const jar = size === "lg" ? "h-24" : size === "sm" ? "h-9" : "h-11";
   const word = size === "lg" ? "text-[2.6rem]" : size === "sm" ? "text-[1.05rem]" : "text-[1.3rem]";
   return (
     <span className={`inline-flex items-center gap-2 ${stacked ? "flex-col" : ""} ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/jar.png" alt="" width={370} height={385} className={`${jar} w-auto select-none`} draggable={false} />
+      <img src="/brand/umami-labz-jar.png" alt="" width={760} height={604} className={`${jar} w-auto select-none`} draggable={false} />
       <span className={`flex ${stacked ? "flex-col items-center" : "items-baseline gap-1.5"} leading-none`}>
         <span className={`t-inked font-[family-name:var(--ff-display)] font-extrabold tracking-[0.02em] ${word}`}>UMAMI</span>
-        <span className={`font-[family-name:var(--ff-body)] font-extrabold tracking-[0.14em] text-terra ${size === "lg" ? "text-[1.2rem]" : "text-[0.7rem]"}`}>
-          LABS
+        <span className={`t-inked-rust font-[family-name:var(--ff-display)] font-extrabold tracking-[0.06em] ${size === "lg" ? "text-[1.6rem]" : "text-[0.82rem]"}`}>
+          LABZ
         </span>
       </span>
     </span>

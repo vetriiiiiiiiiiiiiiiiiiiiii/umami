@@ -105,11 +105,11 @@ export function Hero() {
             <Wash tone="green" className="absolute inset-[6%] h-[88%] w-[88%]" opacity={0.5} />
             <Wash tone="blue" className="absolute bottom-[6%] right-[2%] h-[38%] w-[46%]" opacity={0.35} />
 
-            <div data-h="visual" className="absolute inset-[17%]">
+            <div data-h="visual" className="absolute inset-x-[4%] inset-y-[12%]">
               <div className="float relative h-full w-full">
                 <Image
-                  src="/brand/jar.png"
-                  alt="Hand-drawn jar of green umami sauce with the label ‘Trends fade. Experiences remain. Contains umami.’"
+                  src="/brand/umami-labz-jar.png"
+                  alt="Hand-drawn jar of green umami sauce between two laurel sprigs, labelled ‘Trends fade. Experiences remain. Contains umami.’"
                   fill
                   priority
                   sizes="(min-width:1024px) 40vw, 80vw"
@@ -131,7 +131,7 @@ export function Hero() {
               </Note>
               <Arrow className="ml-auto mr-[38%] mt-1 h-10 w-24 -scale-x-100 rotate-[-14deg] text-ink" />
             </div>
-            <div data-h="note" className="absolute -right-3 bottom-[20%] hidden w-[24%] sm:block">
+            <div data-h="note" className="absolute -right-2 bottom-[4%] hidden w-[30%] sm:block">
               <Arrow className="mb-1 h-10 w-16 -scale-x-100 rotate-[160deg] text-ink" />
               <Note>
                 <span className="text-terra">3.</span> label checked
@@ -147,8 +147,8 @@ export function Hero() {
             </div>
 
             {/* little doodles */}
-            <SketchIcon name="flask" tone="purple" className="absolute left-[4%] top-[42%] hidden h-14 w-14 -rotate-12 sm:block" />
-            <SketchIcon name="factory" tone="blue" className="absolute bottom-[3%] right-[30%] hidden h-14 w-14 rotate-6 sm:block" />
+            <SketchIcon name="flask" tone="purple" className="absolute left-[2%] top-[20%] hidden h-12 w-12 -rotate-12 sm:block" />
+            <SketchIcon name="factory" tone="blue" className="absolute bottom-[2%] right-[34%] hidden h-12 w-12 rotate-6 sm:block" />
           </div>
           {/* compact story for phones */}
           <p className="t-hand -mt-2 text-center text-[1.05rem] text-ink sm:hidden">

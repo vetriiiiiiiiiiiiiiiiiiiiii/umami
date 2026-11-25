@@ -96,14 +96,14 @@ export function Loader() {
 
   const p = step / 3;
   return (
-    <div id="loader" ref={ref} role="status" aria-live="polite" aria-label="Loading Umami Labs" style={{ ["--p" as string]: p }}>
+    <div id="loader" ref={ref} role="status" aria-live="polite" aria-label="Loading Umami Labz" style={{ ["--p" as string]: p }}>
       <div className="ld-inner flex w-[min(460px,84vw)] flex-col items-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/jar.png" alt="" width={370} height={385} className="ld-jar h-36 w-auto md:h-44" />
+        <img src="/brand/umami-labz-jar.png" alt="" width={760} height={604} className="ld-jar h-36 w-auto md:h-44" />
         <p className="t-inked mt-4 text-center font-[family-name:var(--ff-display)] text-[clamp(2.4rem,8vw,3.4rem)] font-extrabold leading-none tracking-[0.02em]">
           UMAMI
         </p>
-        <p className="mt-1 text-[0.95rem] font-extrabold tracking-[0.3em] text-terra">LABS</p>
+        <p className="t-inked-rust mt-1 font-[family-name:var(--ff-display)] text-[1.5rem] font-extrabold tracking-[0.06em]">LABZ</p>
         <div className="ld-line mt-8 w-full">
           <svg viewBox="0 0 400 16" preserveAspectRatio="none" className="absolute inset-x-0 -top-[7px] h-4 w-full overflow-visible">
             <path d="M2 9 C 60 3, 120 13, 200 8 S 340 4, 398 9" fill="none" stroke="var(--color-border-strong)" strokeWidth="2" strokeLinecap="round" filter="url(#ink)" />

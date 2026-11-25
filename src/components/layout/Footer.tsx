@@ -101,11 +101,16 @@ export function Footer() {
         {/* the logo, large */}
         <div className="mt-20 flex flex-col items-center gap-2 text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/jar.png" alt="" width={370} height={385} className="float h-32 w-auto md:h-44" />
-          <p aria-hidden className="select-none font-[family-name:var(--ff-display)] text-[clamp(3.6rem,13vw,11rem)] font-extrabold leading-[0.9] tracking-[0.02em] text-[#a9b6ff] [text-shadow:0.04em_0.04em_0_#05060d]">
+          <img src="/brand/umami-labz-jar.png" alt="" width={760} height={604} className="float h-36 w-auto md:h-48" />
+          <p aria-hidden className="select-none font-[family-name:var(--ff-display)] text-[clamp(3.6rem,13vw,11rem)] font-extrabold leading-[0.9] tracking-[0.02em] text-[#f4a9bd] [text-shadow:0.04em_0.04em_0_#070405]">
             UMAMI
           </p>
-          <p aria-hidden className="font-extrabold tracking-[0.3em] text-[#d2bcff] text-[clamp(1rem,2.4vw,2rem)]">LABS</p>
+          <p aria-hidden className="font-[family-name:var(--ff-display)] text-[clamp(2rem,6vw,5rem)] font-extrabold leading-none tracking-[0.04em] text-[#f3b083] [text-shadow:0.04em_0.04em_0_#070405]">LABZ</p>
+          <p aria-hidden className="mt-6 flex items-center gap-4 text-[0.85rem] font-bold tracking-[0.3em] text-band-muted">
+            <span className="h-px w-16 bg-current opacity-60" />
+            EST. 2026
+            <span className="h-px w-16 bg-current opacity-60" />
+          </p>
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-rule pt-6 md:flex-row md:items-center md:justify-between">
