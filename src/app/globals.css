@@ -481,71 +481,58 @@ html.motion [data-reveal="rule"][data-in] {
   transform: scale(1.03);
 }
 
-/* ─── loader ─── */
-#loader {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: var(--color-bg);
-  color: var(--color-text-primary);
-  display: grid;
-  place-items: center;
-}
-html.no-loader #loader {
-  display: none;
-}
-#loader .ld-line {
-  position: relative;
-  height: 2px;
-}
-#loader .ld-draw {
-  stroke-dasharray: 1;
-  stroke-dashoffset: calc(1 - var(--p, 0));
-  transition: stroke-dashoffset 600ms var(--ease-out);
-}
-#loader .ld-jar {
-  animation: float-y 2.4s ease-in-out infinite;
-}
-#loader .ld-stage {
-  opacity: 0.35;
-  transition: opacity 400ms ease;
-}
-#loader .ld-stage.on {
-  opacity: 1;
-}
-#loader.is-leaving {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 800ms var(--ease-in-out) 120ms;
-}
-#loader.is-leaving .ld-inner {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition:
-    opacity 350ms ease,
-    transform 600ms var(--ease-out);
-}
-
 /* ─── hero bits ─── */
-html.motion [data-hero] [data-h="fade"],
-html.motion [data-hero] [data-h="visual"],
-html.motion [data-hero] [data-h="rule"] {
-  opacity: 0;
-  animation: hero-failsafe-o 0.01s 7s forwards;
-}
-@keyframes hero-failsafe-o {
-  to {
-    opacity: 1;
+/* hero + nav entrance: pure CSS so it plays on first paint, before any JavaScript */
+@keyframes hero-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
 }
-html.motion [data-hero] [data-h="line"] > span {
-  transform: translateY(112%);
-  animation: hero-failsafe 0.01s 7s forwards;
-}
-@keyframes hero-failsafe {
-  to {
-    opacity: 1;
-    transform: none;
+@keyframes hero-line {
+  from {
+    transform: translateY(108%);
   }
+}
+@keyframes hero-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) rotate(-3deg);
+  }
+}
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+.nav-in {
+  animation: nav-in 500ms var(--ease-out) both;
+}
+[data-hero] [data-h="fade"],
+[data-hero] [data-h="note"] {
+  animation: hero-up 600ms var(--ease-out) both;
+  animation-delay: var(--hd, 0ms);
+}
+[data-hero] [data-h="line"] > span {
+  animation: hero-line 750ms var(--ease-out) both;
+  animation-delay: var(--hd, 0ms);
+}
+@keyframes draw-in {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+html.motion [data-hero] .draw {
+  animation: draw-in 900ms var(--ease-in-out) both;
+  animation-delay: calc(var(--hd, 0ms) + 250ms);
+}
+[data-hero] [data-h="visual"] {
+  animation: hero-pop 850ms cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation-delay: 60ms;
 }
 .ruler {
   background-image: repeating-linear-gradient(

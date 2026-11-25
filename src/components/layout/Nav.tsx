@@ -9,7 +9,6 @@ import { ThemeToggle } from "./ThemeToggle";
 import { Logo } from "@/components/ui/Sketch";
 import { MegaMenu } from "./MegaMenu";
 import { MobileMenu } from "./MobileMenu";
-import { onSiteReady } from "@/lib/motion";
 
 export function Nav() {
   const pathname = usePathname();
@@ -17,11 +16,9 @@ export function Nav() {
   const [hidden, setHidden] = useState(false);
   const [mega, setMega] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const [entered, setEntered] = useState(false);
   const megaBtn = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
 
-  useEffect(() => onSiteReady(() => setEntered(true)), []);
 
   useEffect(() => {
     let last = window.scrollY;
@@ -78,9 +75,7 @@ export function Nav() {
         />
         <nav
           aria-label="Primary"
-          className={`wrap flex h-[var(--nav-h)] items-center justify-between gap-6 transition-[opacity,transform] duration-700 [transition-timing-function:var(--ease-out)] ${
-            entered ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"
-          }`}
+          className="nav-in wrap flex h-[var(--nav-h)] items-center justify-between gap-6"
         >
           <Link href="/" className="group flex items-center text-ink" aria-label="Umami Labz — home">
             <Logo size="md" className="transition-transform duration-300 group-hover:-rotate-2" />

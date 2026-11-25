@@ -1,10 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { onSiteReady, prefersReducedMotion } from "@/lib/motion";
+import type { CSSProperties } from "react";
 import { Arrow, Note, Scribble, SketchIcon, Wash } from "@/components/ui/Sketch";
 
 const SERVICES = [
@@ -15,43 +11,16 @@ const SERVICES = [
   { label: "Branding & marketing", href: "/marketing" },
 ];
 
+const d = (ms: number) => ({ ["--hd" as string]: `${ms}ms` }) as CSSProperties;
+
+/** Server-rendered; its entrance is pure CSS so it plays on first paint. */
 export function Hero() {
-  const root = useRef<HTMLElement>(null);
-
-  // short, friendly entrance: words, then the jar, then the notes get "written"
-  useEffect(() => {
-    const el = root.current;
-    if (!el || prefersReducedMotion()) return;
-    const q = gsap.utils.selector(el);
-    const ctx = gsap.context(() => {
-      gsap.set(q("[data-h]"), { opacity: 1 });
-      gsap.set(q("[data-h='line'] > span"), { yPercent: 110 });
-      gsap.set(q("[data-h='fade']"), { opacity: 0, y: 12 });
-      gsap.set(q("[data-h='visual']"), { opacity: 0, scale: 0.92, rotate: -4 });
-      gsap.set(q("[data-h='note']"), { opacity: 0, y: 6 });
-    }, el);
-    const off = onSiteReady(() =>
-      ctx.add(() => {
-        gsap
-          .timeline({ defaults: { ease: "expo.out" } })
-          .to(q("[data-h='line'] > span"), { yPercent: 0, duration: 1, stagger: 0.08 }, 0)
-          .to(q("[data-h='visual']"), { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: "back.out(1.4)" }, 0.15)
-          .to(q("[data-h='fade']"), { opacity: 1, y: 0, duration: 0.8, stagger: 0.06 }, 0.35)
-          .to(q("[data-h='note']"), { opacity: 1, y: 0, duration: 0.6, stagger: 0.18, ease: "power2.out" }, 0.8);
-      }),
-    );
-    return () => {
-      off();
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    <section ref={root} data-hero aria-labelledby="hero-title" className="grain relative overflow-hidden pt-[var(--nav-h)]">
+    <section data-hero aria-labelledby="hero-title" className="grain relative overflow-hidden pt-[var(--nav-h)]">
       <div className="wrap relative z-10 grid items-center gap-6 pb-16 pt-8 md:pt-12 lg:min-h-[calc(100svh-var(--nav-h))] lg:grid-cols-12 lg:gap-10 lg:pb-16 lg:pt-4">
         {/* message */}
         <div className="order-2 lg:order-1 lg:col-span-6">
-          <p data-h="fade" className="t-hand text-[1.2rem] text-terra sm:text-[clamp(1.35rem,1.9vw,1.8rem)]">
+          <p data-h="fade" style={d(0)} className="t-hand text-[1.2rem] text-terra sm:text-[clamp(1.35rem,1.9vw,1.8rem)]">
             food product consultancy —
           </p>
           <h1
@@ -60,7 +29,7 @@ export function Hero() {
             aria-label="From first formulation to full-scale production."
           >
             {[["From first"], ["formulation to"], ["full-scale"], ["production."]].map((line, i) => (
-              <span key={i} data-h="line" className="mask-line" aria-hidden style={line[0] === "full-scale" ? { paddingBottom: "0.24em", marginBottom: "-0.18em" } : undefined}>
+              <span key={i} data-h="line" className="mask-line" aria-hidden style={{ ...d(60 + i * 70), ...(line[0] === "full-scale" ? { paddingBottom: "0.24em", marginBottom: "-0.18em" } : {}) }}>
                 <span>
                   {line[0] === "full-scale" ? (
                     <span className="t-inked relative inline-block">
@@ -74,11 +43,11 @@ export function Hero() {
               </span>
             ))}
           </h1>
-          <p data-h="fade" className="t-lead mt-6 max-w-[46ch] text-muted">
+          <p data-h="fade" style={d(320)} className="t-lead mt-6 max-w-[46ch] text-muted">
             We help food founders and brands develop products, get them compliant and get them made — one team for recipe,
             regulation, factory and launch.
           </p>
-          <div data-h="fade" className="mt-8 flex flex-wrap gap-4">
+          <div data-h="fade" style={d(400)} className="mt-8 flex flex-wrap gap-4">
             <Link href="/contact" className="cta">
               <span>Start a project</span>
               <span aria-hidden className="cta-arrow">↗</span>
@@ -88,7 +57,7 @@ export function Hero() {
               <span aria-hidden className="cta-arrow">→</span>
             </Link>
           </div>
-          <ul data-h="fade" className="mt-10 flex flex-wrap gap-2" aria-label="Core services">
+          <ul data-h="fade" style={d(480)} className="mt-10 flex flex-wrap gap-2" aria-label="Core services">
             {SERVICES.map((s) => (
               <li key={s.href}>
                 <Link href={s.href} className="sketch-soft inline-block bg-raised px-3 py-1.5 text-[0.9rem] font-semibold transition-colors hover:border-ink">
@@ -119,19 +88,19 @@ export function Hero() {
             </div>
 
             {/* annotations */}
-            <div data-h="note" className="absolute left-0 top-[6%] hidden w-[38%] sm:block">
+            <div data-h="note" style={d(560)} className="absolute left-0 top-[6%] hidden w-[38%] sm:block">
               <Note>
                 <span className="text-terra">1.</span> your idea
               </Note>
               <Arrow className="ml-[30%] mt-1 h-10 w-24 rotate-[18deg] text-ink" />
             </div>
-            <div data-h="note" className="absolute right-0 top-[2%] hidden w-[40%] text-right sm:block">
+            <div data-h="note" style={d(680)} className="absolute right-0 top-[2%] hidden w-[40%] text-right sm:block">
               <Note>
                 <span className="text-terra">2.</span> a recipe that works
               </Note>
               <Arrow className="ml-auto mr-[38%] mt-1 h-10 w-24 -scale-x-100 rotate-[-14deg] text-ink" />
             </div>
-            <div data-h="note" className="absolute -right-2 bottom-[4%] hidden w-[30%] sm:block">
+            <div data-h="note" style={d(800)} className="absolute -right-2 bottom-[4%] hidden w-[30%] sm:block">
               <Arrow className="mb-1 h-10 w-16 -scale-x-100 rotate-[160deg] text-ink" />
               <Note>
                 <span className="text-terra">3.</span> label checked
@@ -139,7 +108,7 @@ export function Hero() {
                 FSSAI ✓
               </Note>
             </div>
-            <div data-h="note" className="absolute bottom-[2%] left-[2%] hidden w-[42%] sm:block">
+            <div data-h="note" style={d(920)} className="absolute bottom-[2%] left-[2%] hidden w-[42%] sm:block">
               <Arrow className="mb-1 ml-[44%] h-10 w-20 rotate-[-150deg] text-ink" />
               <Note>
                 <span className="text-terra">4.</span> ready for the factory

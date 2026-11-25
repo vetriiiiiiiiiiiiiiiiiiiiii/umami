@@ -3,22 +3,11 @@
 export const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-declare global {
-  interface Window {
-    __umamiReady?: boolean;
-  }
-}
-
-/** Resolves once the loading sequence has handed over to the page. */
+/** Runs once the page is interactive (kept as a hook for future gating; never blocks). */
 export function onSiteReady(cb: () => void) {
   if (typeof window === "undefined") return () => {};
-  if (window.__umamiReady) {
-    cb();
-    return () => {};
-  }
-  const h = () => cb();
-  window.addEventListener("umami:ready", h, { once: true });
-  return () => window.removeEventListener("umami:ready", h);
+  cb();
+  return () => {};
 }
 
 export function scrollToTarget(target: string | HTMLElement | number) {

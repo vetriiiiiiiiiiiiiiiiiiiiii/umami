@@ -4,7 +4,6 @@ import "./globals.css";
 import { site } from "@/content/site";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { Loader } from "@/components/layout/Loader";
 import { MotionRoot } from "@/components/layout/MotionRoot";
 import { SketchDefs } from "@/components/ui/Sketch";
 import { JsonLd, organizationSchema } from "@/lib/seo";
@@ -41,8 +40,8 @@ export const viewport: Viewport = {
   ],
 };
 
-/** Runs before first paint: theme, motion preference and loader state. */
-const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('umami-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.setAttribute('data-theme',t)}catch(e){}var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add(rm?'reduced':'motion');try{if(rm||sessionStorage.getItem('umami-loaded'))d.classList.add('no-loader')}catch(e){d.classList.add('no-loader')}})()`;
+/** Runs before first paint: theme and motion preference. */
+const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('umami-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.setAttribute('data-theme',t)}catch(e){}var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;d.classList.add(rm?'reduced':'motion')})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -56,7 +55,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Loader />
         <Nav />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}
