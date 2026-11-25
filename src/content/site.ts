@@ -37,6 +37,7 @@ export const primaryNav = [
 export const footerNav = [
   { label: "Services", href: "/services" },
   { label: "Our Approach", href: "/approach" },
+  { label: "Formulation to Shelf", href: "/journey" },
   { label: "Industries", href: "/industries" },
   { label: "Manufacturing", href: "/manufacturing" },
   { label: "Marketing", href: "/marketing" },

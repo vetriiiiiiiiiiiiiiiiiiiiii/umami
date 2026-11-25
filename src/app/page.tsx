@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/Hero";
 import { HowItWorks } from "@/components/home/HowItWorks";
+import { ProductJourney } from "@/components/journey/ProductJourney";
 import { CapabilityExplorer } from "@/components/home/CapabilityExplorer";
 import { Industries } from "@/components/home/Industries";
 import { LaunchPackage } from "@/components/home/LaunchPackage";
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <HowItWorks />
+      <ProductJourney compact />
       <CapabilityExplorer />
       <Industries />
       <LaunchPackage compact />

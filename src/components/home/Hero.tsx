@@ -83,8 +83,8 @@ export function Hero() {
               <span>Start a project</span>
               <span aria-hidden className="cta-arrow">↗</span>
             </Link>
-            <Link href="/services" className="cta cta--ghost">
-              <span>Our services</span>
+            <Link href="/journey" className="cta cta--ghost">
+              <span>See how a product is made</span>
               <span aria-hidden className="cta-arrow">→</span>
             </Link>
           </div>

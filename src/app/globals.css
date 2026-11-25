@@ -731,3 +731,13 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* journey: conveyor belt */
+@keyframes conveyor {
+  to {
+    transform: translateX(130px);
+  }
+}
+.conveyor-items {
+  animation: conveyor 3.2s linear infinite;
+}
