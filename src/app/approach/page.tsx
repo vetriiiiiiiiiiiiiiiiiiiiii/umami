@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "Our Approach — Concept to Compliant to Commercial",
   description:
-    "How Umami Labz plans formulation, regulatory compliance, manufacturing feasibility and commercial strategy together — compliance-first, from concept to production.",
+    "How The Umami Labs plans formulation, regulatory compliance, manufacturing feasibility and commercial strategy together — compliance-first, from concept to production.",
   path: "/approach",
 });
 

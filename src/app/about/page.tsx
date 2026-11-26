@@ -6,9 +6,9 @@ import { MaskLines } from "@/components/ui/Text";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "About Umami Labz",
+  title: "About The Umami Labs",
   description:
-    "Umami Labz exists to close the gap between food product innovation and commercialisation — combining food science, compliance and commercial reality in one team.",
+    "The Umami Labs exists to close the gap between food product innovation and commercialisation — combining food science, compliance and commercial reality in one team.",
   path: "/about",
 });
 
@@ -24,7 +24,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        label="About Umami Labz"
+        label="About The Umami Labs"
         title={["We believe good food", ["deserves good ", { serif: "engineering." }]]}
         image="dough"
       />
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 decisions made in isolation collide later — in the label, on the line or in the margin.
               </p>
               <p>
-                Umami Labz brings those disciplines into one coordinated team. The product, its compliance, its costing, its
+                The Umami Labs brings those disciplines into one coordinated team. The product, its compliance, its costing, its
                 manufacturing feasibility and its commercial strategy are considered together from the beginning — so ideas become
                 products that can actually be made, registered and sold.
               </p>

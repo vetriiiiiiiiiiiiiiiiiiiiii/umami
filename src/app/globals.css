@@ -3,69 +3,69 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ───────────────────────────────────────────────
-   UMAMI LABZ — sketchbook design tokens
+   THE UMAMI LABS — sketchbook design tokens
    Light: paper & ink   Dark: the sketchbook at night
    ─────────────────────────────────────────────── */
 
 :root,
 [data-theme="light"] {
   color-scheme: light;
-  /* paper, ink & watercolour — taken from the Umami Labz logo */
+  /* paper, ink & watercolour — taken from The Umami Labs logo */
   --color-bg: #f6f4f0;
   --color-surface: #ede8e0;
   --color-surface-elevated: #fcfbf8;
-  --color-text-primary: #231b1f;
-  --color-text-secondary: #66595e;
-  --color-brand: #7a1232;
+  --color-text-primary: #1f2419;
+  --color-text-secondary: #5f6656;
+  --color-brand: #3d5a1f;
   --color-brand-contrast: #fcfbf8;
-  --color-accent: #7fb153;
-  --color-accent-ink: #14200c;
-  --color-accent-2: #a64a2a;
-  --color-sage: #c5dfad;
-  --color-border: #ddd5ca;
-  --color-border-strong: #ab9f93;
-  --color-overlay: rgba(35, 27, 31, 0.5);
-  --color-grid: rgba(122, 18, 50, 0.05);
-  --color-deep: #3b1224;
+  --color-accent: #8fb85a;
+  --color-accent-ink: #18230c;
+  --color-accent-2: #a35f1a;
+  --color-sage: #cfe3b0;
+  --color-border: #dcd8cc;
+  --color-border-strong: #a7a796;
+  --color-overlay: rgba(31, 36, 25, 0.5);
+  --color-grid: rgba(61, 90, 31, 0.05);
+  --color-deep: #23331a;
   --color-deep-text: #f6f4f0;
-  --color-deep-muted: #e2c4cd;
+  --color-deep-muted: #cfdcbb;
   --color-deep-border: rgba(246, 244, 240, 0.18);
   --img-filter: sepia(0.12) saturate(0.9) contrast(0.97);
   --nav-surface: rgba(246, 244, 240, 0.88);
   --grain-opacity: 0.08;
-  --wash-green: #9fcf7c;
-  --wash-blue: #ebbac7;
-  --wash-purple: #f2c79f;
+  --wash-green: #a9cf80;
+  --wash-blue: #c3dcc2;
+  --wash-purple: #f2cf9c;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
   /* the sketchbook at night */
-  --color-bg: #171215;
-  --color-surface: #211a1e;
-  --color-surface-elevated: #2b2227;
-  --color-text-primary: #f1ebe5;
-  --color-text-secondary: #bcaeaa;
-  --color-brand: #f2a3b8;
-  --color-brand-contrast: #171215;
+  --color-bg: #141911;
+  --color-surface: #1c2318;
+  --color-surface-elevated: #252e20;
+  --color-text-primary: #eef0e6;
+  --color-text-secondary: #b3bba8;
+  --color-brand: #b9d98a;
+  --color-brand-contrast: #141911;
   --color-accent: #9ccf6c;
-  --color-accent-ink: #10131f;
-  --color-accent-2: #f1a276;
-  --color-sage: #3a4f2c;
-  --color-border: #3a2f34;
-  --color-border-strong: #5e4e55;
-  --color-overlay: rgba(10, 6, 8, 0.6);
-  --color-grid: rgba(242, 163, 184, 0.05);
-  --color-deep: #0e0a0c;
-  --color-deep-text: #f1ebe5;
-  --color-deep-muted: #bcaeaa;
+  --color-accent-ink: #101509;
+  --color-accent-2: #f0b071;
+  --color-sage: #34502a;
+  --color-border: #2f3a29;
+  --color-border-strong: #4d5c43;
+  --color-overlay: rgba(6, 9, 5, 0.6);
+  --color-grid: rgba(185, 217, 138, 0.05);
+  --color-deep: #0b0f09;
+  --color-deep-text: #eef0e6;
+  --color-deep-muted: #b3bba8;
   --color-deep-border: rgba(241, 235, 229, 0.12);
   --img-filter: sepia(0.1) saturate(0.85) brightness(0.9);
-  --nav-surface: rgba(23, 18, 21, 0.86);
+  --nav-surface: rgba(20, 25, 17, 0.86);
   --grain-opacity: 0.06;
   --wash-green: #4f7a35;
-  --wash-blue: #7a3550;
-  --wash-purple: #8a5530;
+  --wash-blue: #3d5a46;
+  --wash-purple: #7a5a2c;
 }
 
 :root {
@@ -235,20 +235,10 @@ html.theme-switching *::after {
 }
 .t-inked-rust {
   color: var(--color-accent-2);
-  text-shadow: 0.05em 0.045em 0 var(--color-text-primary);
-}
-[data-theme="dark"] .t-inked-rust,
-.deep .t-inked-rust {
-  text-shadow: 0.05em 0.045em 0 #070405;
 }
 /* the logo's inked offset: blue letters with a dark ink shadow */
 .t-inked {
   color: var(--color-brand);
-  text-shadow: 0.045em 0.04em 0 var(--color-text-primary);
-}
-[data-theme="dark"] .t-inked,
-.deep .t-inked {
-  text-shadow: 0.045em 0.04em 0 #070405;
 }
 .text-balance {
   text-wrap: balance;
@@ -279,8 +269,8 @@ html.theme-switching *::after {
   --color-border: var(--color-deep-border);
   --color-border-strong: rgba(244, 242, 236, 0.32);
   --color-grid: rgba(244, 242, 236, 0.05);
-  --color-brand: #f4a9bd;
-  --color-accent-2: #f3b083;
+  --color-brand: #cfe8a6;
+  --color-accent-2: #f3be86;
 }
 .grain {
   position: relative;

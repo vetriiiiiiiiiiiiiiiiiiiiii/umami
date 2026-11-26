@@ -77,7 +77,7 @@ export function Hero() {
             <div data-h="visual" className="absolute inset-x-[4%] inset-y-[12%]">
               <div className="float relative h-full w-full">
                 <Image
-                  src="/brand/umami-labz-jar.png"
+                  src="/brand/the-umami-labs-mark.png"
                   alt="Hand-drawn jar of green umami sauce between two laurel sprigs, labelled ‘Trends fade. Experiences remain. Contains umami.’"
                   fill
                   priority

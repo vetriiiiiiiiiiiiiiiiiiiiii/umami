@@ -401,7 +401,7 @@ export function EnquiryForm() {
                       <Link href="/privacy" className="underline">
                         privacy notice
                       </Link>{" "}
-                      and agree to Umami Labz using these details to respond to my enquiry.
+                      and agree to The Umami Labs using these details to respond to my enquiry.
                     </span>
                   </label>
                   <Err errors={errors} uid={uid} k="consent" />

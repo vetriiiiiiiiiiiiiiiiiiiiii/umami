@@ -15,8 +15,8 @@ const body = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800"], 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Umami Labz — Food Product Development, Compliance & Manufacturing Consultancy",
-    template: "%s — Umami Labz",
+    default: "The Umami Labs — Food Product Development, Compliance & Manufacturing Consultancy",
+    template: "%s — The Umami Labs",
   },
   description: site.description,
   applicationName: site.name,
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: "Umami Labz — One team. The entire journey.",
+    title: "The Umami Labs — One team. The entire journey.",
     description: site.description,
     url: "/",
     locale: "en_IN",
   },
-  twitter: { card: "summary_large_image", title: "Umami Labz — One team. The entire journey.", description: site.description },
+  twitter: { card: "summary_large_image", title: "The Umami Labs — One team. The entire journey.", description: site.description },
   robots: { index: true, follow: true },
 };
 

@@ -5,7 +5,7 @@ export function LegalPage({ title, sections }: { title: string; sections: { h: s
         <div className="lg:col-span-4">
           <p className="t-label text-muted">Legal</p>
           <h1 className="t-h2 mt-6">{title}</h1>
-          <p className="t-label mt-6 text-terra">Draft — to be reviewed by Umami Labz before publication</p>
+          <p className="t-label mt-6 text-terra">Draft — to be reviewed by The Umami Labs before publication</p>
         </div>
         <div className="max-w-[64ch] lg:col-span-7 lg:col-start-6">
           {sections.map((s) => (

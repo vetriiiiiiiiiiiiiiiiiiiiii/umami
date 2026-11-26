@@ -48,7 +48,7 @@ const articles: Article[] = [
     dek: "Why regulatory thinking should shape a formulation before the first trial — not after the last one.",
     category: "Regulatory",
     date: "2026-11-01",
-    author: "Umami Labz Editorial",
+    author: "The Umami Labs Editorial",
     image: "labGlass",
     published: true,
     body: [
@@ -75,7 +75,7 @@ const articles: Article[] = [
     dek: "A pilot is not a bigger prototype. It is the first honest conversation between your recipe and a production process.",
     category: "Product development",
     date: "2026-10-14",
-    author: "Umami Labz Editorial",
+    author: "The Umami Labs Editorial",
     image: "dough",
     published: true,
     body: [
@@ -102,7 +102,7 @@ const articles: Article[] = [
     dek: "Margin is decided in formulation, process and packaging long before a product reaches a shelf.",
     category: "Manufacturing",
     date: "2026-09-22",
-    author: "Umami Labz Editorial",
+    author: "The Umami Labs Editorial",
     image: "flour",
     published: true,
     body: [
@@ -127,7 +127,7 @@ const articles: Article[] = [
     dek: "Your own facility and a contract manufacturer solve different problems. The right answer depends on stage, volume and control.",
     category: "Startup guides",
     date: "2026-09-02",
-    author: "Umami Labz Editorial",
+    author: "The Umami Labs Editorial",
     image: "processPlant",
     published: true,
     body: [

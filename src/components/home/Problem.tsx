@@ -107,7 +107,7 @@ export function Problem() {
             <svg viewBox="0 0 900 560" className="h-auto w-full overflow-visible" role="img" aria-labelledby="diagram-desc">
               <desc id="diagram-desc">
                 Diagram: an idea connected to seven separate consultants by broken paths with handoffs, delays and rework, which
-                then merge into one continuous Umami Labz pathway from idea to market.
+                then merge into one continuous The Umami Labs pathway from idea to market.
               </desc>
               <defs>
                 <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -120,7 +120,7 @@ export function Problem() {
               <g className="band" opacity="0">
                 <rect x="128" y="226" width="660" height="108" fill="var(--color-surface)" stroke="var(--color-border-strong)" />
                 <text x="140" y="324" fill="var(--color-text-secondary)" fontSize="13" fontFamily="var(--ff-mono)" letterSpacing="0.1em">
-                  UMAMI LABZ — ONE COORDINATED TEAM
+                  THE UMAMI LABS — ONE COORDINATED TEAM
                 </text>
               </g>
 

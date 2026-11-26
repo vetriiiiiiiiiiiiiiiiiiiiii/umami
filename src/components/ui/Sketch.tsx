@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 
 /**
- * The Umami Labz drawing kit — everything that makes the site feel hand-made:
+ * The Umami Labs drawing kit — everything that makes the site feel hand-made:
  * SVG filters (wobbly ink + watercolour bleed), washes, scribbles, arrows and
  * a small set of sketched icons. Pure SVG, no images, works in both themes.
  */
@@ -275,20 +275,25 @@ export const serviceIcon: Record<string, IconName> = {
 
 /* ───────── logo ───────── */
 
-/** The jar from the Umami Labz logo + the wordmark set in type so it adapts to both themes. */
-export function Logo({ size = "md", stacked = false, className = "" }: { size?: "sm" | "md" | "lg"; stacked?: boolean; className?: string }) {
+/** The jar + brush-script wordmark from The Umami Labs logo (light-green wordmark in dark mode / on dark bands). */
+export function Logo({ size = "md", onDark = false, className = "" }: { size?: "sm" | "md" | "lg"; onDark?: boolean; className?: string }) {
   const jar = size === "lg" ? "h-24" : size === "sm" ? "h-9" : "h-11";
-  const word = size === "lg" ? "text-[2.6rem]" : size === "sm" ? "text-[1.05rem]" : "text-[1.3rem]";
+  const word = size === "lg" ? "h-20" : size === "sm" ? "h-8" : "h-10";
   return (
-    <span className={`inline-flex items-center gap-2 ${stacked ? "flex-col" : ""} ${className}`}>
+    <span className={`inline-flex items-center gap-2 ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/umami-labz-jar.png" alt="" width={760} height={604} className={`${jar} w-auto select-none`} draggable={false} />
-      <span className={`flex ${stacked ? "flex-col items-center" : "items-baseline gap-1.5"} leading-none`}>
-        <span className={`t-inked font-[family-name:var(--ff-display)] font-extrabold tracking-[0.02em] ${word}`}>UMAMI</span>
-        <span className={`t-inked-rust font-[family-name:var(--ff-display)] font-extrabold tracking-[0.06em] ${size === "lg" ? "text-[1.6rem]" : "text-[0.82rem]"}`}>
-          LABZ
-        </span>
-      </span>
+      <img src="/brand/the-umami-labs-mark.png" alt="" width={760} height={604} className={`${jar} w-auto select-none`} draggable={false} />
+      {onDark ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src="/brand/the-umami-labs-wordmark-dark.png" alt="The Umami Labs" width={900} height={259} className={`${word} w-auto select-none`} draggable={false} />
+      ) : (
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/the-umami-labs-wordmark.png" alt="The Umami Labs" width={900} height={259} className={`${word} w-auto select-none dark:hidden`} draggable={false} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/the-umami-labs-wordmark-dark.png" alt="The Umami Labs" width={900} height={259} className={`${word} hidden w-auto select-none dark:block`} draggable={false} />
+        </>
+      )}
     </span>
   );
 }

@@ -62,8 +62,8 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
       transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
     >
       <div className="wrap relative z-10 flex h-[var(--nav-h)] shrink-0 items-center justify-between">
-        <Link href="/" onClick={onClose} className="flex items-center" aria-label="Umami Labz — home">
-          <Logo size="md" />
+        <Link href="/" onClick={onClose} className="flex items-center" aria-label="The Umami Labs — home">
+          <Logo size="md" onDark />
         </Link>
         <button ref={closeBtn} type="button" onClick={onClose} aria-label="Close menu" className="flex h-11 items-center gap-3">
           <span className="t-label">Close</span>

@@ -55,7 +55,7 @@ export async function POST(req: Request) {
         method: "POST",
         headers: { authorization: `Bearer ${resendKey}`, "content-type": "application/json" },
         body: JSON.stringify({
-          from: process.env.ENQUIRY_FROM_EMAIL || "Umami Labz Website <onboarding@resend.dev>",
+          from: process.env.ENQUIRY_FROM_EMAIL || "The Umami Labs Website <onboarding@resend.dev>",
           to: [to],
           reply_to: e.email,
           subject: `New project enquiry — ${e.name}${e.company ? ` (${e.company})` : ""}`,

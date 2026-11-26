@@ -77,7 +77,7 @@ export function Nav() {
           aria-label="Primary"
           className="nav-in wrap flex h-[var(--nav-h)] items-center justify-between gap-6"
         >
-          <Link href="/" className="group flex items-center text-ink" aria-label="Umami Labz — home">
+          <Link href="/" className="group flex items-center text-ink" aria-label="The Umami Labs — home">
             <Logo size="md" className="transition-transform duration-300 group-hover:-rotate-2" />
           </Link>
 
